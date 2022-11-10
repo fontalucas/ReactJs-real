@@ -1,0 +1,47 @@
+.Button {
+    width: auto;
+    margin: 5px;
+    padding-top: 12px;
+    font-size: 8px;
+    border-radius: 8px;
+    flex: none;
+    display: inline-block;
+    order: 1;
+    align-self: center;
+    flex-grow: 0;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    outline: inherit;
+}
+.Optioncheck2 {
+    text-decoration: none;
+    margin: auto;
+    padding: 5px;
+    font-size: 1.5rem !important;
+    background: #2b8600cb !important;
+    border-radius: 8px;
+    display: flex;
+    align-self: center;
+    width: 10%;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff !important;
+    cursor: pointer;
+    margin-top: 2%;
+
+}
+h3 {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin: auto;
+    width: 97%;
+    background-color: rgba(211, 211, 211, 0.952);
+    border: 1px solid #e1e1e1;
+    border-radius: 10px;
+}

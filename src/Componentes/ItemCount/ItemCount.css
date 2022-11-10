@@ -1,0 +1,40 @@
+.Counter {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+    margin: auto;
+}
+
+.Button {
+    text-decoration: none;
+    margin: auto;
+    width: auto;
+    padding: 12px;
+    font-size: 1.5rem !important;
+    background: #ffc400 !important;
+    border-radius: 8px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff !important;
+    border: none;
+    border-style: none;
+    cursor: pointer;
+    outline: inherit;
+    font-size: larger;
+}
+
+.Number {
+    font-size: 1.5rem;
+    padding: 20px;
+    margin: 0;
+    order: 1;
+}
+
+.Controls {
+    display: flex;
+    justify-content: center;
+}

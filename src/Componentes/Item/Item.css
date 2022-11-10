@@ -1,0 +1,17 @@
+.card {
+    background-color: #0000005b !important; /* me pisa el boostrap */
+    border: solid 1px white !important;
+    margin: auto;
+    margin-top: 2%;
+    width: 13rem;}
+.card-img-top {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 2%;
+    margin: auto;
+    }
+.btn-detalle {
+    font-style: none;
+    color: white ;
+    text-decoration: none;
+}
