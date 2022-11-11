@@ -51,7 +51,7 @@ const ItemListContainer = () => {
             <div>
                 <h1>NUESTRAS BURGERS</h1> 
                 <div>
-                    <ItemList burgers={burgers}/>
+                    <ItemList className="burgers" burgers={burgers}/>
                 </div>
             </div>
     )

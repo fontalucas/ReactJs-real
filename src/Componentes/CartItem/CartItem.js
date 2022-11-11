@@ -11,27 +11,27 @@ const CartItem = ({ id, img, name, quantity, price }) => {
     }
     
     return (
-        <article classNameName='CardCartItem'>
-            <header classNameName="HeaderCartItem">
-                <img  classNameName='imagencarrito' src={img} alt={name} />
-                <h2 classNameName="ItemHeaderCartItem">
+        <article className='CardCartItem'>
+            <header className="HeaderCartItem">
+                <img  className='imagencarrito' src={img} alt={name} />
+                <h2 className="ItemHeaderCartItem">
                     {name}
                 </h2>
             </header>
-            <section classNameName='ContainerItemCartItem'>
-                <p classNameName="InfoCartItem">
+            <section className='ContainerItemCartItem'>
+                <p className="InfoCartItem">
                     Cantidad: {quantity}
                 </p>
-                <p classNameName="InfoCartItem">
+                <p className="InfoCartItem">
                     Precio por Unidad: ${price}
                 </p>
             </section>           
-            <footer classNameName='ItemFooterCartItem'>
-                <p classNameName="InfoCartItem">
+            <footer className='ItemFooterCartItem'>
+                <p className="InfoCartItem">
                      Subtotal: ${price * quantity}
                 </p>
                  {/* <ItemCount onAdd={handleOnAdd} stock={stock}/> */}
-                <button classNameName='ButtonCartItem' onClick={() => handleRemove(id)}>X</button>
+                <button className='ButtonCartItem' onClick={() => handleRemove(id)}>X</button>
             </footer>
         </article>
     )

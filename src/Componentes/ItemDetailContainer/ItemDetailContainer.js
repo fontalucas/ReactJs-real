@@ -40,9 +40,9 @@ const ItemDetailContainer = ({setCart}) => {
 
         return (
             <>
-            <div classNameName='ItemDetailContainer' >
+            <div className='ItemDetailContainer' >
                 <ItemDetail {...burgers}/>
-                <button classNameName='OptionA' onClick={() => navigate(-1)}>Atras</button>
+                <button className='OptionA' onClick={() => navigate(-1)}>Atras</button>
             </div>
             </>
     )

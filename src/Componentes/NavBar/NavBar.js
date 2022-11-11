@@ -34,20 +34,20 @@ const NavBar = () => {
                 <img className="cabecera-img" src="https://i.ibb.co/4pjQ0SR/logo.jpg" alt="logo del bar"></img>
             </NavLink>
         </nav>
-        <nav classNameName="navbar navbar-expand-lg navbar-light">
+        <nav className="navbar navbar-expand-lg navbar-light">
             <div className="container-fluid">
                 <div className="navbar-nav">
                     {/* NO PUDE HACER FUNCIONAR EL MAP DE CATEGORIAS PARA TRAERLO DEL FIRESTORE */}
             {/* {categories.map(cat => (
-                <NavLink key={cat.id} to={`/category/${cat.slug}`} classNameName={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>{cat.label}</NavLink>
+                <NavLink key={cat.id} to={`/category/${cat.slug}`} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>{cat.label}</NavLink>
             ))} */}
-                    <NavLink to={'/category/clasica'} classNameName={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>LINEA CLASICA</NavLink>
-                    <NavLink to={'/category/cheese'} classNameName={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>LINEA CHESSE</NavLink>
-                    <NavLink to={'/category/homenaje'} classNameName={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>LINEA HOMENAJE</NavLink>
-                    <NavLink to={'/contacto/'} classNameName={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>ENCONTRANOS</NavLink>
+                    <NavLink to={'/category/clasica'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>LINEA CLASICA</NavLink>
+                    <NavLink to={'/category/cheese'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>LINEA CHESSE</NavLink>
+                    <NavLink to={'/category/homenaje'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>LINEA HOMENAJE</NavLink>
+                    <NavLink to={'/contacto/'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>ENCONTRANOS</NavLink>
+                    <CartWidget className="carrito" />
                 </div>
-                <div classNameName="carrito">
-                    <CartWidget classNameName="carrito" />
+                <div className="carrito">
                 </div>
             </div>
         </nav>

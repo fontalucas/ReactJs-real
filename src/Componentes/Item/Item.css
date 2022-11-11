@@ -12,6 +12,13 @@
     }
 .btn-detalle {
     font-style: none;
-    color: white ;
     text-decoration: none;
+    color: white ;
+}
+.parent {
+    display: inline-flex;
+    flex-direction: row;
+    }
+.div1 {
+    margin: 100px;
 }

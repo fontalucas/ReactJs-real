@@ -88,24 +88,24 @@ const Checkout = () => {
 
     return (
         <section className="container">
-            <div classNameName="cajaformulario">
+            <div className="cajaformulario">
                 <h1>Checkout</h1>
-                <form action="https://formsubmit.co/c2c96b44d0a8ed8ec0c7410c55ca16ed" method="POST" id="contact-form" classNameName="formulario" >                
-                    <div classNameName="box">
+                <form action="https://formsubmit.co/c2c96b44d0a8ed8ec0c7410c55ca16ed" method="POST" id="contact-form" className="formulario" >                
+                    <div className="box">
                         <label>Nombre</label> <br></br>
                         <input type="text" name="nombre" placeholder='Ingrese su nombre' />
                     </div>
 
-                    <div classNameName="box">
+                    <div className="box">
                         <label>Email</label> <br></br>              
                         <input type="email" name="email" placeholder='Ingrese su email'/>
                     </div>
-                    <div classNameName="box"> 
+                    <div className="box"> 
                         <label>Numero de telefono</label> <br></br>
                         <input type="number" name="phone" placeholder='Ingrese su numero de telefono' />
                     </div>
                     <div>
-                        <input classNameName="enviar" type="submit" value="Generar orden" /> 
+                        <input className="enviar" type="submit" value="Generar orden" /> 
                     </div>   
                 </form>
             </div>
@@ -121,7 +121,7 @@ export default Checkout
 
         /* <div>
             <h1>Checkout</h1>
-            <form id="contact-form" classNameName="formulario">
+            <form id="contact-form" className="formulario">
                 <div className="mb-3">
                     <label for="formGroupExampleInput" className="form-label">Nombre</label>
                     <input type="text" className="form-control" placeholder="Escriba su nombre" />
@@ -134,7 +134,7 @@ export default Checkout
                     <label for="formGroupExampleInput2" className="form-label">Telefono</label>
                     <input type="number" className="form-control" placeholder="Escriba su telefono" />
                 </div>
-                <div classNameName="enviar">
+                <div className="enviar">
                     <input type="submit" value="Enviar" onClick={createOrder}>Generar orden </input>
                 </div> 
             </form>

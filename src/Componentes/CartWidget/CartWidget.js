@@ -10,8 +10,8 @@ const CartWidget = () => {
     const navigate = useNavigate()
 
     return(
-        <button to='/cart' classNameName="CartWidget" onClick={() => navigate('/cart')}>
-            <img src={cart} alt='cart-widget' classNameName='CartImg'/>
+        <button to='/cart' className="CartWidget" onClick={() => navigate('/cart')}>
+            <img src={cart} alt='cart-widget' className='CartImg'/>
             {totalQuantity}
         </button>
     );

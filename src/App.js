@@ -12,7 +12,7 @@ import Checkout from './Componentes/Checkout/Chekout';
 function App() {
 
   return (
-    <div classNameName="App">
+    <div className="App">
         <NotificationProvider>
           <CartProvider>
             <BrowserRouter>

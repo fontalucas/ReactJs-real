@@ -15,7 +15,7 @@ const Notification = ({ message, severity }) => {
     if(message === '') return
 
     return (
-        <div style={notificationStyles} classNameName={severity === 'success' ? 'greenclassName' : 'redclassName'}>
+        <div style={notificationStyles} className={severity === 'success' ? 'greenclassName' : 'redclassName'}>
         {message}
         </div>
     )

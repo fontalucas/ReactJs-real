@@ -26,29 +26,29 @@ const ItemDetail = ({ id, name, img, category, description, price, stock }) => {
     const quantityAdded = getProductQuantity(id)
 
     return (
-        <article classNameName="CardItem">
-            <header classNameName="Header">
-                <h6 classNameName="ItemHeader">
+        <article className="CardItem">
+            <header className="Header">
+                <h6 className="ItemHeader">
                     {name}
                 </h6>
             </header>
             <picture>
-                <img src={img} alt={name} classNameName="ItemImg"/>
+                <img src={img} alt={name} className="ItemImg"/>
             </picture>
             <section>
-                <p classNameName="Info">
+                <p className="Info">
                     Linea: {category}
                 </p>
-                <p classNameName="Info">
+                <p className="Info">
                     Descripción: {description}
                 </p>
-                <p classNameName="Info">
+                <p className="Info">
                     Precio: ${price}
                 </p>
             </section>           
-            <footer classNameName='ItemFooter'>
+            <footer className='ItemFooter'>
                 { stock !== 0 ? <ItemCount onAdd={handleOnAdd} stock={stock} initial={quantityAdded} />: <p>No hay stock</p>}
-                { isInCart(id) && <Link to='/cart' classNameName='Optioncheck' style={{ backgroundColor: 'blue'}}>Finalizar compra</Link> }
+                { isInCart(id) && <Link to='/cart' className='Optioncheck' style={{ backgroundColor: 'blue'}}>Finalizar compra</Link> }
             </footer>
         </article>
     )
