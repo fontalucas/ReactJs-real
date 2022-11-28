@@ -1,17 +1,11 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from 'firebase/firestore';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import './index.css';
+import App from './App';
+import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.css'
 
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
 
-const firebaseConfig = {
-    apiKey: "AIzaSyAe8v85vIIooyUzXd82ycuefZQLtPgvy5E",
-    authDomain: "apprealb.firebaseapp.com",
-    projectId: "apprealb",
-    storageBucket: "apprealb.appspot.com",
-    messagingSenderId: "736605583898",
-    appId: "1:736605583898:web:201e2e69c10bb69df76fa3"
-};
-
-
-const app = initializeApp(firebaseConfig);
-
-export const db = getFirestore(app)
+reportWebVitals();
