@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import CartWidget from "../CartWidget/CartWidget.js";
 import { NavLink } from "react-router-dom";
 import { getDocs, collection, query, orderBy } from 'firebase/firestore'
-import { db } from '../../service/firebase'
+import { db } from '../../service/firebase/index.js'
 
 
 const NavBar = () => {
@@ -37,18 +37,17 @@ const NavBar = () => {
         <nav className="navbar navbar-expand-lg navbar-light">
             <div className="container-fluid">
                 <div className="navbar-nav">
-                    {/* NO PUDE HACER FUNCIONAR EL MAP DE CATEGORIAS PARA TRAERLO DEL FIRESTORE */}
-            {/* {categories.map(cat => (
-                <NavLink key={cat.id} to={`/category/${cat.slug}`} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>{cat.label}</NavLink>
-            ))} */}
+                    {/* SIGO INTENTANDO DE OTRAS FORMAS PERO NO SE DONDE ESTOY ERRANDO, */}
+                    {/* {categories.map(cat => (
+                        <NavLink key={cat.id} to={`/category/${cat.slug}`} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>${cat.label}</NavLink>
+                    ))} */}
                     <NavLink to={'/category/clasica'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>LINEA CLASICA</NavLink>
                     <NavLink to={'/category/cheese'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>LINEA CHESSE</NavLink>
                     <NavLink to={'/category/homenaje'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>LINEA HOMENAJE</NavLink>
                     <NavLink to={'/contacto/'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>ENCONTRANOS</NavLink>
                     <CartWidget className="carrito" />
                 </div>
-                <div className="carrito">
-                </div>
+                
             </div>
         </nav>
     </>

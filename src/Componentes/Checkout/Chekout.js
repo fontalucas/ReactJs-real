@@ -2,8 +2,8 @@ import './Checkout.css'
 import { useState, useContext } from "react"
 import { CartContext } from "../../context/CartContext"
 import { NotificationContext} from '../../notification/NotificationService'
-import { collection, getDocs, query, where, documentId, writeBatch, addDoc, doc } from 'firebase/firestore'
-import { db } from '../../service/firebase'
+import { collection, getDocs, query, where, documentId, writeBatch, addDoc } from 'firebase/firestore'
+import { db } from '../../service/firebase/index'
 import { useNavigate } from "react-router-dom"
 
 
@@ -15,21 +15,38 @@ const Checkout = () => {
 
     const navigate = useNavigate()
 
+    /* const buyer = {
+        nombre: '',
+        email: '',
+        phone: '',
+    }
+    const [user, setUser] = useState(buyer)
+
+    const capturarInputs = (e) => {
+        const {name, value} = e.target;
+        setUser({...user, [name]:value})
+    }
+
+    const guardarDatos = async(e) => {
+        e.preventDefault();
+        setUser({...buyer})
+        } */
+    
+
     const createOrder = async () => {
             setLoading(true)
-            
+
         try {
             const objOrder = {
                 buyer: {
-                    nombre: '',
-                    email: '',
-                    phone: '',
-                },
+                    nombre: 'Pablo',
+                    email: 'Pablo123@gmail.comm',
+                    phone: '34465465446',
+            },
                 items: cart,
                 total: total
                 
             }
-            
             const batch = writeBatch(db)
             
             const outOfStock = []
@@ -39,7 +56,8 @@ const Checkout = () => {
             const productsRef = collection(db, 'burgers')
             
             const productsAddedFromFirestore = await getDocs(query(productsRef, where(documentId(), 'in', ids)))
-            
+
+
             const { docs } = productsAddedFromFirestore
             
             docs.forEach(doc => {
@@ -52,7 +70,7 @@ const Checkout = () => {
                 if(stockDb >- prodQuantity) {
                     batch.update(doc.ref, {stock: stockDb - prodQuantity})
                 } else {
-                    outOfStock.push(doc.id)
+                    outOfStock.push({id: doc.id, ...dataDoc})
                 }
             })
             
@@ -81,7 +99,7 @@ const Checkout = () => {
         }
         
     }
-    
+
     if(loading) {
         return <h1>Generando su orden...</h1>
     }
@@ -90,22 +108,22 @@ const Checkout = () => {
         <section className="container">
             <div className="cajaformulario">
                 <h1>Checkout</h1>
-                <form action="https://formsubmit.co/c2c96b44d0a8ed8ec0c7410c55ca16ed" method="POST" id="contact-form" className="formulario" >                
+                <form /* onSubmit={guardarDatos} */ action="https://formsubmit.co/c2c96b44d0a8ed8ec0c7410c55ca16ed" method="POST" id="contact-form" className="formulario" >                
                     <div className="box">
                         <label>Nombre</label> <br></br>
-                        <input type="text" name="nombre" placeholder='Ingrese su nombre' />
+                        <input type="text" name="nombre" placeholder='Ingrese su nombre' /* onChange={capturarInputs} value={user.nombre} *//>
                     </div>
 
                     <div className="box">
                         <label>Email</label> <br></br>              
-                        <input type="email" name="email" placeholder='Ingrese su email'/>
+                        <input type="email" name="email" placeholder='Ingrese su email' /* onChange={capturarInputs} value={user.email} *//>
                     </div>
                     <div className="box"> 
                         <label>Numero de telefono</label> <br></br>
-                        <input type="number" name="phone" placeholder='Ingrese su numero de telefono' />
+                        <input type="number" name="phone" placeholder='Ingrese su numero de telefono' /* onChange={capturarInputs} value={user.phone} *//>
                     </div>
                     <div>
-                        <input className="enviar" type="submit" value="Generar orden" /> 
+                        <input className="enviar" onClick={createOrder} type="button" value="Generar orden" /> 
                     </div>   
                 </form>
             </div>
