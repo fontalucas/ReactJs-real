@@ -15,12 +15,7 @@ const Checkout = () => {
 
     const navigate = useNavigate()
 
-    /* const buyer = {
-        nombre: '',
-        email: '',
-        phone: '',
-    }
-    const [user, setUser] = useState(buyer)
+    /* const [user, setUser] = useState(false)
 
     const capturarInputs = (e) => {
         const {name, value} = e.target;
@@ -30,7 +25,7 @@ const Checkout = () => {
     const guardarDatos = async(e) => {
         e.preventDefault();
         setUser({...buyer})
-        } */
+        }  */
     
 
     const createOrder = async () => {
