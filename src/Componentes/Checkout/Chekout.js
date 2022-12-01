@@ -14,7 +14,7 @@ const Checkout = () => {
     const { setNotification } = useContext(NotificationContext)
 
     const navigate = useNavigate()
-
+    //Intente diferentes formas de hacer el formulario y captar los inputs pero no me estoy dando cuenta por que no funcionan.
     /* const [user, setUser] = useState(false)
 
     const capturarInputs = (e) => {

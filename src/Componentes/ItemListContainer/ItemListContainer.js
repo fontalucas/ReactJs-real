@@ -1,57 +1,31 @@
 import ItemList from "../ItemList/ItemList";
-import { useState, useEffect } from "react";
-// import { getProduct, getProductByCategory } from "../../asyncMock"; ya no es necesario, traemos de firestore
+// import { useState, useEffect } from "react";
+import { getBurgers } from "../../service/firebase/firestore/burgers"
 import { useParams } from "react-router-dom";
-import { getDocs, collection, query, where } from 'firebase/firestore'
-import { db } from '../../service/firebase'
+import { useAsync } from "../../hook/useAsync"
+
 
 const ItemListContainer = () => {
-        const [burgers, setProduct] = useState([])
-        const [loading, setLoading] = useState(true)
         const { categoryId } = useParams()
 
+        const getBurgersWithCategory = () => getBurgers(categoryId)
 
-        useEffect(() => {
-            document.title = 'Listado de productos'
-        }, [])
+        const { data: burgers, error, loading } = useAsync(getBurgersWithCategory, [categoryId])
 
-        useEffect(() => {
-
-            setLoading(true)
-
-            const collectionRef = categoryId 
-                ? query(collection(db, 'burgers'), where('category', '==', categoryId))
-                : collection(db, 'burgers')
-    
-            getDocs(collectionRef)
-                .then(response => {
-                    console.log(response)
-                        const productsAdapted = response.docs.map(doc => {
-                        const data = doc.data()
-                            console.log(data)
-    
-                    return { id: doc.id, ...data }
-                })
-
-                setProduct(productsAdapted)
-
-            }).catch(error => {
-                console.log(error)
-            }).finally(() => {
-                setLoading(false)
-            })  
-        }, [categoryId])
 
     //tiempo de carga simulado    
     if(loading) {
             return <h1>Cargando productos ...</h1>
         } 
+        if(error) {
+            return <h1>Algo sucedio, hubo un error :'( </h1>
+        }
 
         return (
             <div>
                 <h1>NUESTRAS BURGERS</h1> 
                 <div>
-                    <ItemList className="burgers" burgers={burgers}/>
+                    <ItemList burgers={burgers}/>
                 </div>
             </div>
     )

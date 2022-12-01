@@ -3,12 +3,12 @@ import { useState, useEffect } from 'react'
 import CartWidget from "../CartWidget/CartWidget.js";
 import { NavLink } from "react-router-dom";
 import { getDocs, collection, query, orderBy } from 'firebase/firestore'
-import { db } from '../../service/firebase/index.js'
+import { db } from '../../service/firebase'
 
 
 const NavBar = () => {
     //no pude hacer funcionar la sincronización con firebase
-    const [categories, setCategories] = useState([])
+    const [/* categories */, setCategories] = useState([])
 
     useEffect(() => {
         const collectionRef = query(collection(db, 'categories'), orderBy('order')) 
@@ -38,9 +38,10 @@ const NavBar = () => {
             <div className="container-fluid">
                 <div className="navbar-nav">
                     {/* SIGO INTENTANDO DE OTRAS FORMAS PERO NO SE DONDE ESTOY ERRANDO, */}
-                    {/* {categories.map(cat => (
-                        <NavLink key={cat.id} to={`/category/${cat.slug}`} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>${cat.label}</NavLink>
-                    ))} */}
+                    {/*
+                    categories.map(cat => (
+                        <NavLink key={cat.id} to={`/category/${cat.slug}`} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>{cat.label}</NavLink>
+                    ))*/} 
                     <NavLink to={'/category/clasica'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>LINEA CLASICA</NavLink>
                     <NavLink to={'/category/cheese'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>LINEA CHESSE</NavLink>
                     <NavLink to={'/category/homenaje'} className={({ isActive}) => isActive ? 'ActiveOption' : 'Option'}>LINEA HOMENAJE</NavLink>

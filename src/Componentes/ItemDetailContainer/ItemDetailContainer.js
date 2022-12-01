@@ -2,34 +2,33 @@ import './ItemDetailContainer.css'
 import { useState, useEffect } from 'react'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams, useNavigate } from 'react-router-dom'
-import { getDoc, doc } from 'firebase/firestore'
-import { db } from '../../service/firebase'
-
+// import { getDoc, doc } from 'firebase/firestore'
+// import { db } from '../../service/firebase'
+import { getBurger } from '../../service/firebase/firestore/burgers'
 
 const ItemDetailContainer = ({setCart}) => {
-    const [burgers, setProduct] = useState([])
+    const [burger, setBurger] = useState([])
     const [loading, setLoading] = useState(true)
+    
     const { productId } = useParams()
+    
     const navigate = useNavigate()
         
         useEffect(() => {
-            document.title = loading ? 'Cargando' : `Detalle ${burgers.name} `
+            document.title = loading ? 'Cargando' : `Detalle ${burger.name} `
 })
-        
         useEffect(() => {
-            const docRef = doc(db, 'burgers', productId)
-            getDoc(docRef)
-                .then(response => {
-                    const data = response.data()
-                    const productAdapted = { id: response.id, ...data }
-                    setProduct(productAdapted)
+            setLoading(true)
+
+            getBurger(productId).then(burger => {
+                setBurger(burger)
             })
             .catch(error => {
-                console.log(error)
             })
             .finally(() => {
                 setLoading(false)
             })
+            
         }, [productId])
 
         if(loading) {
@@ -41,7 +40,7 @@ const ItemDetailContainer = ({setCart}) => {
         return (
             <>
             <div className='ItemDetailContainer' >
-                <ItemDetail {...burgers}/>
+                <ItemDetail {...burger}/>
                 <button className='OptionA' onClick={() => navigate(-1)}>Atras</button>
             </div>
             </>
