@@ -5,6 +5,7 @@ import { NotificationContext} from '../../notification/NotificationService'
 import { collection, getDocs, query, where, documentId, writeBatch, addDoc } from 'firebase/firestore'
 import { db } from '../../service/firebase/index'
 import { useNavigate } from "react-router-dom"
+import { Form } from 'react-bootstrap'
 
 
 const Checkout = () => {
@@ -15,7 +16,14 @@ const Checkout = () => {
 
     const navigate = useNavigate()
     //Intente diferentes formas de hacer el formulario y captar los inputs pero no me estoy dando cuenta por que no funcionan.
-    /* const [user, setUser] = useState(false)
+
+    const buyer = {
+            nombre: "",
+            email: "",
+            phone: ""
+    }
+
+    const [user, setUser] = useState(false)
 
     const capturarInputs = (e) => {
         const {name, value} = e.target;
@@ -24,8 +32,14 @@ const Checkout = () => {
 
     const guardarDatos = async(e) => {
         e.preventDefault();
-        setUser({...buyer})
-        }  */
+        try {
+            await addDoc(collection(db, 'orders'),{
+                ...user
+            })
+        } catch (error) {
+            console.log(error);
+        } setUser({...buyer})
+        }
     
 
     const createOrder = async () => {
@@ -33,11 +47,7 @@ const Checkout = () => {
 
         try {
             const objOrder = {
-                buyer: {
-                    nombre: 'Pablo',
-                    email: 'Pablo123@gmail.comm',
-                    phone: '34465465446',
-            },
+                buyer: user,
                 items: cart,
                 total: total
                 
@@ -49,7 +59,7 @@ const Checkout = () => {
             const ids = cart.map(prod => prod.id)
             
             const productsRef = collection(db, 'burgers')
-            
+
             const productsAddedFromFirestore = await getDocs(query(productsRef, where(documentId(), 'in', ids)))
 
 
@@ -98,29 +108,30 @@ const Checkout = () => {
     if(loading) {
         return <h1>Generando su orden...</h1>
     }
+    
 
     return (
         <section className="container">
             <div className="cajaformulario">
                 <h1>Checkout</h1>
-                <form /* onSubmit={guardarDatos} */ action="https://formsubmit.co/c2c96b44d0a8ed8ec0c7410c55ca16ed" method="POST" id="contact-form" className="formulario" >                
+                <Form  onSubmit={guardarDatos} method="POST" id="contact-form" className="formulario" >                
                     <div className="box">
                         <label>Nombre</label> <br></br>
-                        <input type="text" name="nombre" placeholder='Ingrese su nombre' /* onChange={capturarInputs} value={user.nombre} *//>
+                        <input type="text" name="nombre" placeholder='Ingrese su nombre'  onChange={capturarInputs} value={user.nombre} />
                     </div>
 
                     <div className="box">
                         <label>Email</label> <br></br>              
-                        <input type="email" name="email" placeholder='Ingrese su email' /* onChange={capturarInputs} value={user.email} *//>
+                        <input type="email" name="email" placeholder='Ingrese su email'  onChange={capturarInputs} value={user.email} />
                     </div>
                     <div className="box"> 
                         <label>Numero de telefono</label> <br></br>
-                        <input type="number" name="phone" placeholder='Ingrese su numero de telefono' /* onChange={capturarInputs} value={user.phone} *//>
+                        <input type="number" name="phone" placeholder='Ingrese su numero de telefono'  onChange={capturarInputs} value={user.phone} />
                     </div>
                     <div>
-                        <input className="enviar" onClick={createOrder} type="button" value="Generar orden" /> 
+                        <button className="enviar" onClick={createOrder} type="button" value="Generar orden" /> 
                     </div>   
-                </form>
+                </Form>
             </div>
         </section>
     )
